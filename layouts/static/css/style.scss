@@ -1,0 +1,80 @@
+@import "variables";
+
+@mixin setLayout($direction, $justify) {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: center;
+}
+
+@mixin hover(){
+  background-color: $hover;
+  color: $white;
+  transition: $time;
+}
+
+body {
+  background-color: $pink;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.conteudo {
+  @include setLayout(column, center);
+  width: 100%;
+  height: 100%;
+  margin-top: 40px;
+
+  h1 {
+    color: $white;
+    margin-bottom: 25px;
+  }
+
+  .card {
+    max-width: 50% !important;
+    box-shadow: 11px 11px 16px -5px rgba(0, 0, 0, 0.39);
+    border-radius: $radius;
+
+    img {
+      height: 100%;
+      width: 100%;
+      border-top-left-radius: $radius;
+      border-bottom-left-radius: $radius;
+    }
+
+    a {
+      border-radius: $radius;
+      border: none;
+      background-color: $pink;
+    }
+    a:hover {
+      @include hover();
+    }
+  }
+}
+
+.conteudo-nav{
+  // margin-left: 80px;
+  @include setLayout(row, space-between);
+
+  .pesquisa{
+    @include setLayout(column, flex-start)
+  }
+}
+
+.botaozinho{
+  border-radius: $radius;
+  border: 1px solid $pink;
+  background-color: $white;
+  padding: 6px 10px;
+  transition: $time;
+}
+
+.botaozinho:hover{
+  @include hover();
+}

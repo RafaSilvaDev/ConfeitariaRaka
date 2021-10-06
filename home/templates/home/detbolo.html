@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Confeitaria | Bolos</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">Confeitaria Raka</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{% url 'home' %}"
+                >Bolos</a
+              >
+              <a
+                class="nav-link"
+                href="#"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasBottom"
+                aria-controls="offcanvasBottom"
+                >Sobre Nós</a
+              >
+            </div>
+          </div>
+          <img style="height: 50px; width: 50px;" src="{% static 'images/icon.png' %}" alt="">
+        </div>
+    </nav>
+    <!-- SOBRE NÓS -->
+    <div
+      class="offcanvas offcanvas-bottom"
+      tabindex="-1"
+      id="offcanvasBottom"
+      aria-labelledby="offcanvasBottomLabel"
+    >
+      <div class="offcanvas-header">
+        <h5
+          class="offcanvas-title"
+          id="offcanvasBottomLabel"
+          style="font-size: 40px"
+        >
+          Quem somos?
+        </h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body small" style="font-size: 20px">
+        Somos camponeses do vilarejo Roberto Mange, e nosso passatempo favorito
+        é fazer bolos!<br />
+        Nosso maior desejo é adoçar a vida dos nossos clientes.
+      </div>
+    </div>
+
+    <div class="conteudo">
+        <h1>Este é o delicioso {{dados.sabor}}</h1>
+      <div class="card mb-3" style="max-width: 540px">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{dados.foto.url}}" alt="" />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{dados.sabor}}</h5>
+              <p class="card-text">{{dados.descricao}}</p>
+              <p class="card-text">
+                <small class="text-muted"
+                  >Confeccionado por: {{dados.confeiteiro}}</small
+                ><br />
+                <small class="text-muted"
+                  >Data de fabricação:
+                  {{dados.data_fabricacao|date:'d/m/Y'}}</small
+                ><br />
+                <small class="text-muted"
+                  >Data de validade: {{dados.data_validade|date:'d/m/Y'}}</small
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
